@@ -68,11 +68,13 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                from(components["release"])
-
                 groupId = "com.github.SuperHich"
                 artifactId = "HeroAppsLib"
                 version = "0.1.0"
+
+                afterEvaluate {
+                    from(components["release"])
+                }
 
                 // POM file metadata
                 pom {
@@ -93,6 +95,12 @@ afterEvaluate {
                             name.set("Hichem LAROUSSI")
                             email.set("creative.apps.rh@gmail.com")
                         }
+                    }
+
+                    scm {
+                        connection.set("scm:git:github.com/SuperHich/HeroAppsLib.git")
+                        developerConnection.set("scm:git:ssh://github.com/SuperHich/HeroAppsLib.git")
+                        url.set("https://github.com/SuperHich/HeroAppsLib/tree/main")
                     }
                 }
             }
